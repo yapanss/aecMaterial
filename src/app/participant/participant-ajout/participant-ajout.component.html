@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-title>Enregistrer un participant</mat-card-title>
+    <mat-card-content>
+        <form #partipantForm="ngForm" novalidate (ngSubmit)="onSubmit($event)">
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Nom et Prénoms"
+                name="nom" [(ngModel)]="nom" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Contact" name="contact" [(ngModel)]="contact" required>
+            </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Date d'arrivée" [matDatepicker]="dateArr" [(ngModel)]="dateArrivee" name="dateArrivee">
+            <mat-datepicker-toggle matSuffix [for]="dateArr">
+            </mat-datepicker-toggle>
+            <mat-datepicker #dateArr></mat-datepicker>
+          </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="invitePar" name="invitePar" [(ngModel)]="invitePar" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="religion" name="religion" [(ngModel)]="religion" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="statutMatrimonial" name="statutMatrimonial" [(ngModel)]="statutMatrimonial" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="sexe" name="sexe" [(ngModel)]="sexe" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="lieuFormation" name="lieuFormation" [(ngModel)]="lieuFormation" required>
+            </mat-form-field>
+
+            <button mat-raised-button type="submit" color="primary">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,187 @@
+
+<form [formGroup]="celluleForm" novalidate (ngSubmit)="submitCellule($event)">
+ <mat-horizontal-stepper [linear]="true" #stepper labelPosition="bottom">
+  <mat-step formGroupName="champGroup" [stepControl]="champGroup">
+
+    <h2>Infos du champ</h2>
+
+    <mat-form-field>
+      <input matInput placeholder="Date" [matDatepicker]="celluleDate" formControlName="dateCellule">
+      <mat-datepicker-toggle matSuffix [for]="celluleDate">
+      </mat-datepicker-toggle>
+      <mat-datepicker #celluleDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Champ" formControlName="champ">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Lieu" formControlName="lieu">
+    </mat-form-field>
+    <div>
+      <button type="button" mat-icon-button matStepperNext>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+
+  </mat-step>
+  <mat-step formGroupName="fpnGroup" [stepControl]="fpnGroup">
+
+
+    <h2>Infos des prénuptiaux</h2>
+    <mat-form-field>
+      <input matInput placeholder="Effectif Total" formControlName="fpnTotal" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Effectif Des Nouveaux" formControlName="fpnNouveaux" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Méditation" formControlName="meditationTexte" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Dirigeant" formControlName="meditationDirigeant">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enseignement" formControlName="enseignementTitre" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enseignant" formControlName="enseignant">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Question De Partage" formControlName="questionPartage">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Modérateur" formControlName="moderateur">
+    </mat-form-field>
+    <div>
+      <button type="button" mat-icon-button matStepperPrevious>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button type="button" mat-icon-button matStepperNext>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+    </div>
+
+  </mat-step>
+
+  <mat-step formGroupName="cdnGroup" [stepControl]="cdnGroup">
+
+    <h2>Infos des mariés</h2>
+    <mat-form-field>
+      <input matInput placeholder="Effectif Total" formControlName="cdnTotal" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Effectif Des Nouveaux" formControlName="cdnNouveaux" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Méditation" formControlName="meditationTexte" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Dirigeant" formControlName="meditationDirigeant">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enseignement" formControlName="enseignementTitre" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enseignant" formControlName="enseignant">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Question De Partage" formControlName="questionPartage">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Modérateur" formControlName="moderateur">
+    </mat-form-field>
+    <div>
+      <button type="button" mat-icon-button matStepperPrevious>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button type="button" mat-icon-button matStepperNext>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+    </div>
+
+  </mat-step>
+
+
+<mat-step formGroupName="veaGroup" [stepControl]="veaGroup">
+
+    <h2>Vie en abondance</h2>
+    <mat-form-field>
+      <input matInput placeholder="Effectif Total" formControlName="veaTotal" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Effectif Des Nouveaux" formControlName="veaNouveaux" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enseignement" formControlName="enseignementTitre" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enseignant" formControlName="enseignant">
+    </mat-form-field>
+    <div>
+      <button type="button" mat-icon-button matStepperPrevious>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button type="button" mat-icon-button matStepperNext>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+    </div>
+<div>
+   <button type="submit" mat-raised-button color="primary">Submit</button>
+ </div>
+  </mat-step>
+
+<mat-step formGroupName="participantGroup" [stepControl]="participantGroup">
+
+
+    <h2>Participants</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" (change)="checkAll()" [checked]="allChecked"></th>
+          <th>Nom et Prénoms</th>
+          <th>Lecture biblique</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let participant of cellule.length !=0 ?  listeParticipantsEdit : listeParticipants ; let i=index">
+          <td><input type="checkbox" (change)="checkOne(i)" [checked]="participant.isChecked"></td>
+          <td>{{participant.nom}}</td>
+          <td *ngIf="participant.isChecked">
+            <select (change)="participant.livre=$event.target.value">
+              <option value="" disabled selected>livre</option>
+               <option [value]="livre" *ngFor="let livre of livres">{{livre}}</option>
+            </select>
+          </td>
+          <td *ngIf="participant.isChecked">
+            <select (change)="participant.chap=$event.target.value">
+               <option [value]="chap" *ngFor="let chap of chapitres" >{{chap}}</option>
+            </select>
+          </td>
+    </tr>
+    </tbody>
+    </table>
+
+
+    <div>
+      <button type="button" mat-icon-button matStepperPrevious>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button type="button" mat-icon-button matStepperNext>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+    </div>
+<div>
+   <button type="submit" mat-raised-button color="primary" class="spacer">Submit</button>
+ </div>
+  </mat-step>
+
+ </mat-horizontal-stepper>
+
+</form>
+

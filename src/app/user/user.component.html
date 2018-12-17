@@ -1,0 +1,24 @@
+<h1>Utilisateurs</h1>
+<!-- <mat-list *ngFor=" let user of users">
+  <mat-list-item>
+    {{user.nom}} {{user.prenoms}}
+    <span style="margin-right: 10%">
+    <a [routerLink]="" mat-button><mat-icon matListIcon>info outline</mat-icon></a>
+    <a [routerLink]="" mat-button><mat-icon matListIcon>info outline</mat-icon></a>
+    <a [routerLink]="" mat-button><mat-icon matListIcon>delete</mat-icon></a>
+  </span>
+  </mat-list-item>
+</mat-list> -->
+
+<!-- ******************************************************** -->
+<mat-accordion *ngFor=" let user of users">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      {{user.nom}} {{user.prenoms}}
+    </mat-expansion-panel-header>
+
+    <a [routerLink]="" mat-button><mat-icon matListIcon>info outline</mat-icon></a>
+    <a [routerLink]="" mat-button><mat-icon matListIcon>delete</mat-icon></a>
+
+  </mat-expansion-panel>
+</mat-accordion>

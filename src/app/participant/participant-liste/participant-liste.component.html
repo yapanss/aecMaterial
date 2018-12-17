@@ -1,0 +1,62 @@
+
+<div class="container">
+  <h1>Participants</h1>
+<div id="ajoutParticipant">
+  <button mat-icon-button color="primary" routerLink="/participant/ajout">
+    <mat-icon>add</mat-icon><span>Ajouter un participant</span>
+  </button>
+</div>
+
+<mat-form-field>
+  <input matInput placeholder="search" (keyup)="onSearch($event.target.value)">
+</mat-form-field>
+
+<div *ngIf="participants2.length == 0">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="participants2.length > 0" id="table">
+
+  <table mat-table [dataSource]="participants" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef>Nom et Prénoms</th>
+    <td mat-cell *matCellDef="let participant">{{participant.nom}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="contact">
+    <th mat-header-cell *matHeaderCellDef>Contact</th>
+    <td mat-cell *matCellDef="let participant">{{participant.contact}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lieu_formation">
+    <th mat-header-cell *matHeaderCellDef>Lieu Formation</th>
+    <td mat-cell *matCellDef="let participant">{{participant.lieuFormation}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="statut_matri">
+      <th mat-header-cell *matHeaderCellDef>Statut matri.</th>
+      <td mat-cell *matCellDef="let participant">{{participant.statutMatrimonial}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="detail">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let participant"><a [routerLink]="['/participant/detail', participant._id]" mat-button style="color: green" class="action"><mat-icon>info outline</mat-icon></a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="editer">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let participant"><a [routerLink]="['/participant/edit', participant._id]" mat-button color="primary" class="action"><mat-icon>edit</mat-icon></a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="supprimer">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let i=index"><button (click) = "onDelete(i)" mat-button color="warn" class="action"><mat-icon>delete</mat-icon></button></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+<tr mat-row *matRowDef="let row; let i=index; columns: columnsToDisplay"></tr>
+</table>
+</div>
+</div>
+
+

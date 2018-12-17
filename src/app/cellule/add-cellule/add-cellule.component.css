@@ -1,0 +1,24 @@
+.container {
+  margin-top: 25px;
+  display: flex;
+}
+
+table {
+  width: 100%;
+}
+/*.mat-horizontal-stepper-header-container {
+  background-color: yellow;
+}*/
+.mat-step-label {
+  font-size: 10px;
+  color: red;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+/*.mat-stepper-horizontal .mat-step ng-template{
+  font-size: 60%;
+  color: coral;
+}*/
+

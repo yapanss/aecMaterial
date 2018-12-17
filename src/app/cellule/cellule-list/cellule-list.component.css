@@ -1,0 +1,63 @@
+.container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.action {
+  display: none;
+}
+
+.mat-row:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.mat-row:hover .action{
+  display: inline-block;
+}
+
+table {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mat-form-field {
+  /*font-size: 14px;*/
+  width: 100%;
+}
+
+#table {
+  /*margin: auto;*/
+
+}
+
+.mat-header-cell {
+  background-color: #120a8f;
+  color: white;
+  text-align: center;
+}
+.mat-cell {
+  text-align: center;
+}
+
+#ajoutCellule {
+  background-color: #120a8f;
+  border-radius: 3px;
+  color: white;
+  width: 250px;
+}
+#ajoutCellule span {
+  margin-left: 20px;
+  color: white
+}
+
+td a .mat-icon, td button .mat-icon {
+  transform: scale(0.7);
+}
+
+#ajoutCellule button .mat-icon {
+  color: white;
+}
+
+

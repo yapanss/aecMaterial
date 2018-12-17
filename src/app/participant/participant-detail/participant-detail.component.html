@@ -1,0 +1,60 @@
+<div class="container">
+<mat-tab-group>
+
+  <mat-tab label="Fiche d'identité">
+
+    <mat-card>
+      <mat-card-title>{{participant.nom}}</mat-card-title>
+      <mat-card-subtitle>{{participant.statutMatrimonial}}, invité par {{participant.invitePar}}</mat-card-subtitle>
+
+      <mat-card-content>
+        <img mat-card-image src="../../assets/assi.jpg" height="300">
+      <p>Se forme à {{participant.lieuFormation}} depuis le {{participant.dateArrivee | date: 'dd-MM-yyyy'}}</p>
+      <p>Contact : {{participant.contact}}</p>
+      </mat-card-content>
+    </mat-card>
+
+
+  </mat-tab>
+
+  <mat-tab label="Fiche de suivi">
+    <table mat-table [dataSource]="cellulesParticipees">
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let cellule">{{cellule.date | date: "dd-MM-yyyy"}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="type_cellule">
+        <th mat-header-cell *matHeaderCellDef>Cellule</th>
+        <td mat-cell *matCellDef="let cellule">{{cellule.typeCellule}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="meditation">
+        <th mat-header-cell *matHeaderCellDef>Méditation</th>
+        <td mat-cell *matCellDef="let cellule">{{cellule.meditation}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="enseignement">
+        <th mat-header-cell *matHeaderCellDef>Enseignement</th>
+        <td mat-cell *matCellDef="let cellule">{{cellule.enseignement}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="question_partage">
+        <th mat-header-cell *matHeaderCellDef>Question de partage</th>
+        <td mat-cell *matCellDef="let cellule">{{cellule.questionPartage}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lecture">
+        <th mat-header-cell *matHeaderCellDef>Lecture biblique</th>
+        <td mat-cell *matCellDef="let cellule">{{cellule.lecture}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+
+    </table>
+  </mat-tab>
+
+</mat-tab-group>
+</div>

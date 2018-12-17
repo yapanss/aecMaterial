@@ -1,0 +1,82 @@
+<div class="container">
+  <h1>Cellules</h1>
+<div id="ajoutCellule">
+  <button mat-icon-button color="primary" routerLink="/cellule/add">
+    <mat-icon>add</mat-icon>
+  </button><span>Ajouter une cellule</span>
+</div>
+<mat-form-field>
+  <input matInput placeholder="search" (keyup)="onSearch($event.target.value)">
+</mat-form-field>
+
+<div *ngIf="cellules2.length == 0">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="cellules2.length > 0" id="table">
+  <!-- <h1>{{title}} ( {{length}} trouvées )</h1> -->
+<table mat-table [dataSource]="cellules" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.date | date: 'dd/MM/yyyy'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="champ">
+    <th mat-header-cell *matHeaderCellDef>Champ</th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.champ}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lieu">
+    <th mat-header-cell *matHeaderCellDef>Lieu</th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.lieu}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fpn_nvo">
+    <th mat-header-cell *matHeaderCellDef>Fpn nouveaux</th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.fpn.nombreNouveaux}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fpn_tot">
+    <th mat-header-cell *matHeaderCellDef>Fpn total</th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.fpn.nombreParticipants}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="cdn_nvo">
+    <th mat-header-cell *matHeaderCellDef>CDN nveaux</th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.cdn.nombreNouveaux}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="cdn_tot">
+    <th mat-header-cell *matHeaderCellDef>CDN total</th>
+    <td mat-cell *matCellDef="let cellule">{{cellule.cdn.nombreParticipants}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="detail">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let cellule"><a [routerLink]="['/cellule/detail', cellule._id]" mat-button class="action" style="color: green"><mat-icon>info outline</mat-icon></a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="editer">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let cellule"><a [routerLink]="['/cellule/edit', cellule._id]" mat-button class="action" color="primary"><mat-icon>edit</mat-icon></a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="supprimer">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let i=index"><button (click) = "onDelete(i)" mat-button color="warn" class="action"><mat-icon>delete</mat-icon></button></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+<tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+</table>
+</div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,122 @@
+
+<div class="container">
+
+  <h1>
+  Formation du {{cellule.date | date: 'dd/MM/yyyy'}} à {{cellule.lieu}}
+</h1>
+<mat-tab-group>
+  <mat-tab label="Formation prénuptiale">
+
+<div class="cordeon">
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Méditation
+    </mat-expansion-panel-header>
+
+    <p>Texte : {{cellule.fpn.meditationTexte}}</p>
+    <p>Dirigeant : {{cellule.fpn.meditationDirigeant}}</p>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Enseignement
+    </mat-expansion-panel-header>
+
+    <p>Titre : {{cellule.fpn.enseignementTitre}}</p>
+    <p>Enseignant : {{cellule.fpn.enseignementDirigeant}}</p>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Question De Partage
+    </mat-expansion-panel-header>
+
+    <p>Question : {{cellule.fpn.questionPartage}}</p>
+    <p>Modérateur : {{cellule.fpn.questionPartageDirigeant}}</p>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Participants
+    </mat-expansion-panel-header>
+
+    <ul>
+      <li *ngFor = "let participant of fpnParticipant">
+        {{participant.nom}}
+      </li>
+    </ul>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
+</div>
+
+
+<!-- ************************************ -->
+
+  </mat-tab>
+  <mat-tab label="Cellule des nouveaux">
+
+
+<div class="cordeon">
+<mat-accordion>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Méditation
+    </mat-expansion-panel-header>
+
+    <p>Texte : {{cellule.cdn.meditationTexte}}</p>
+    <p>Dirigeant : {{cellule.cdn.meditationDirigeant}}</p>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Enseignement
+    </mat-expansion-panel-header>
+
+    <p>Titre : {{cellule.cdn.enseignementTitre}}</p>
+    <p>Enseignant : {{cellule.cdn.enseignementDirigeant}}</p>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Question De Partage
+    </mat-expansion-panel-header>
+
+    <p>Question : {{cellule.cdn.questionPartage}}</p>
+    <p>Modérateur : {{cellule.cdn.questionPartageDirigeant}}</p>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Participants
+    </mat-expansion-panel-header>
+
+    <ul>
+      <li *ngFor = "let participant of cdnParticipant">
+        {{participant.nom}}
+      </li>
+    </ul>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
+</div>
+<!-- *************************************************** -->
+ </mat-tab>
+
+<mat-tab label="Relecture">
+  <p>{{cellule.relecture}}</p>
+</mat-tab>
+
+</mat-tab-group>
+
+</div>
